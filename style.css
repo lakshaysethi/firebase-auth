@@ -1,0 +1,61 @@
+body,.modal-content{
+    background-color: rgba(46, 43, 43, 0.808);
+    color: white;
+}
+
+.goal{
+    display: block;
+    border: 1px solid white;
+    margin: 2px;
+}   
+
+.goalB{
+    border: solid;
+    display: inline-block;
+    margin-left: 30px;
+    min-height: 100px;
+    margin-bottom: 30px;
+}
+.goalB b{
+    color: green;
+}
+.goalB i{
+    color: red;
+}
+.goalA{
+    display: inline-block;
+}
+
+.scheduleTable td{
+    text-align: center;
+    border: 2px solid white;
+}
+
+.buttonsHolder button{
+    margin: 10px;
+}
+
+.achievementSection{
+    margin-top:20px;
+}
+
+.goalNameInBrowser{
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+button{
+    font-size: 1.2em;
+    
+    padding: .5em;
+}
+
+
+.openCloseBtn{
+    display:block;
+}
+.archived{
+    display:none;
+}
+
+.modal-content
