@@ -7,7 +7,7 @@ const adminItems = document.querySelectorAll('.admin');
 
 const setupUI = (user) => {
   if (user) {
-    
+
     // account info
     db.collection('users').doc(user.uid).get().then(doc => {
       const html = `
@@ -24,7 +24,7 @@ const setupUI = (user) => {
   } else {
     // clear account info
     accountDetails.innerHTML = '';
-    $(".mainContent").html('Please Login to continue');
+    $(".mainContent").hide();
     // toggle user elements
     adminItems.forEach(item => item.style.display = 'none');
     loggedInLinks.forEach(item => item.style.display = 'none');
@@ -33,16 +33,23 @@ const setupUI = (user) => {
 };
 
 
+var lakshayDoc;
+function start(user) {
 
-function start(user){
-
-  db.collection('users')
-  .doc(user.uid)
-  .get()
-  .then(userDoc => {
+  db.collection('users').doc(user.uid).get().then(userDoc => {
     const userdata = userDoc.data();
-    console.log('userdata',userdata);
+    console.log('userdata', userdata);
   });
+
+  lakshayDoc= db.doc(`users/${user.uid}`);
+
+  $(".mainContent").show();
+
+  
+
+
+
+  loadGoalsArray();
 
 
 }
@@ -64,7 +71,7 @@ function start(user){
 
 
 // setup materialize components
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
   var modals = document.querySelectorAll('.modal');
   M.Modal.init(modals);

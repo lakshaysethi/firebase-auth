@@ -58,4 +58,6 @@ button{
     display:none;
 }
 
-.modal-content
+input{
+    color: white;
+}
