@@ -7,9 +7,7 @@ const adminItems = document.querySelectorAll('.admin');
 
 const setupUI = (user) => {
   if (user) {
-    if (user.admin) {
-      adminItems.forEach(item => item.style.display = 'block');
-    }
+    
     // account info
     db.collection('users').doc(user.uid).get().then(doc => {
       const html = `
@@ -19,18 +17,49 @@ const setupUI = (user) => {
       `;
       accountDetails.innerHTML = html;
     });
+    start(user);
     // toggle user UI elements
     loggedInLinks.forEach(item => item.style.display = 'block');
     loggedOutLinks.forEach(item => item.style.display = 'none');
   } else {
     // clear account info
     accountDetails.innerHTML = '';
+    $(".mainContent").html('Please Login to continue');
     // toggle user elements
     adminItems.forEach(item => item.style.display = 'none');
     loggedInLinks.forEach(item => item.style.display = 'none');
     loggedOutLinks.forEach(item => item.style.display = 'block');
   }
 };
+
+
+
+function start(user){
+
+  db.collection('users')
+  .doc(user.uid)
+  .get()
+  .then(userDoc => {
+    const userdata = userDoc.data();
+    console.log('userdata',userdata);
+  });
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
